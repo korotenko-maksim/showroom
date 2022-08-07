@@ -5,6 +5,16 @@
     <title>Базовый шаблон></title>
 </head>
 <body>
-<p>Базовый шаблон верстки</p>
+<header>
+    <ul class="navigation">
+        <li><a href="/edit/category">Добавить категорию</a></li>
+        <li><a href="/edit/item">Добавить товар</a></li>
+    </ul>
+</header>
+<main>
+    {% block main%}
+    <p>Базовый шаблон верстки</p>
+    {% endblock main %}
+</main>
 </body>
 </html>
