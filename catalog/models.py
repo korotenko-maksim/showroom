@@ -38,6 +38,7 @@ class Item(models.Model):
     size = models.IntegerField()
     season = models.ForeignKey(Season, on_delete=models.PROTECT)
     producer = models.CharField(max_length=255, null=True)
+    image = models.ImageField(upload_to='', max_length=255)
 
     def __str__(self):
         return self.name

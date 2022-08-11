@@ -22,6 +22,7 @@ class EditItem(forms.Form):
     size = forms.IntegerField(label='Размер')
     season = forms.ChoiceField(label='Сезон')
     producer = forms.CharField(label='Производитель')
+    image = forms.ImageField(label='Изображение', max_length=255)
 
     def __init__(self, *args, **kwargs):
         super(EditItem, self).__init__(*args, **kwargs)

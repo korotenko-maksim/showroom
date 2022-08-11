@@ -24,7 +24,7 @@ def editCategory(request):
 
 def editItem(request):
     if request.method == 'POST':
-        form = EditItem(data=request.POST)
+        form = EditItem(request.POST, request.FILES)
 
         if form.is_valid():
             data = form.cleaned_data
@@ -32,6 +32,9 @@ def editItem(request):
             season = Season.objects.only('id').get(id=data['season'])
             item = Item(name=data['name'], categoryId=category, size=data['size'],
                         season=season, producer=data['producer'])
+            item.image = data['image']
             item.save()
+        else:
+            print(form.errors)
     form = EditItem()
     return render(request, 'editor.html', {'form': form})
