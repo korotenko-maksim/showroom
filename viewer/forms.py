@@ -11,3 +11,9 @@ class Filter(forms.Form):
         for season in Season.objects.all():
             self.base_fields[season.name] = forms.BooleanField(label=season.name, required=False)
         super(Filter, self).__init__(*args, **kwargs)
+        minSize = Item.objects.order_by('size')[0].size
+        maxSize = Item.objects.order_by('-size')[0].size
+        sizeFields = ['sizeFrom', 'sizeTo']
+        for s in sizeFields:
+            self.fields[s] = forms.IntegerField(max_value=maxSize, min_value=minSize,
+                                                label="", required=False)

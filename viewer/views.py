@@ -25,12 +25,17 @@ def main(request, categoryId=None):
             print('form is not valid')
 
     # сначала определим параметры фильтра по размеру, если задан
-    sizeFrom = data.get('sizeFrom', 0)
+    minSize = Item.objects.order_by('size')[0].size
+    maxSize = Item.objects.order_by('-size')[0].size
+    print(str(minSize) + '-' + str(maxSize))
+
+    sizeFrom = data.get('sizeFrom', minSize)
     if sizeFrom is None:
-        sizeFrom = 0
-    sizeTo = data.get('sizeTo', 1000)
+        sizeFrom = minSize
+
+    sizeTo = data.get('sizeTo', maxSize)
     if sizeTo is None:
-        sizeTo = 1000
+        sizeTo = maxSize
 
     print(str(sizeFrom) + '-' + str(sizeTo))
 
