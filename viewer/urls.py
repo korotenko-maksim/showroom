@@ -1,6 +1,6 @@
-from django.urls import path
+from django.urls import path, re_path
 from viewer import views
 
 urlpatterns = [
-    path('', views.main, name='main'),
+    re_path(r'^(?:(?P<categoryId>\d+))?$', views.main, name='main'),
 ]

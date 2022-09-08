@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block main %}
+
+    <div class="left">
+
+        <div class="categories">
+            <ul>
+            {% for category in categories %}
+                <li><a href="/{{ category.id }}">{{ category.name }}</a></li>
+                {% for inner in inners %}
+                    {% if inner.parentId == category.id %}
+                        <li><a href="/{{ inner.id }}">{{ inner.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </ul>
+        </div>
+
+        <div class="filter">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>Размер: {{ filterForm.sizeFrom }}-{{ filterForm.sizeTo }}</div>
+                {% for field in filterForm %}
+                    {% if field.name not in filterForm.sizeList %}
+                        <div>{{ field }} {{ field.name }}</div>
+                    {% endif %}
+                {% endfor %}
+                <input type="submit" value="Применить">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="central">
+
+        {% for item in history %}
+            <span><a href="/{{ item.id}}">{{ item.name }}</a></span>
+        {% endfor %}
+
+        <div class="items">
+            {% for item in items %}
+                <div class="item">
+                    <div class="item_image"><img src="{{ item.image.url }}"/></div>
+                    <div class="item_name"><span>{{ item.name }}</span></div>
+                    <div class="item_size"><span>Размер: {{ item.size }}</span></div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock main %}

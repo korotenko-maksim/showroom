@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Базовый шаблон></title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 <header>
-    <ul class="navigation">
+    <div class="nav">
+    <ul>
+        <li><a href="/">На главную</a></li>
         <li><a href="/edit/category">Добавить категорию</a></li>
-        <li><a href="/edit/item">Добавить товар</a></li>
+        <li><a href="/edit/item">Добавить запись</a></li>
     </ul>
+    </div>
 </header>
 <main>
     {% block main%}
