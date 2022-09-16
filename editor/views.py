@@ -3,6 +3,12 @@ from .forms import *
 from catalog.models import Category
 from django.db import models
 
+topMenu = [
+    {"name": "На главную", "active": False, "href": "/"},
+    {"name": "Добавить категорию", "active": False, "href": "/edit/category"},
+    {"name": "Добавить запись", "active": False, "href": "/edit/item"},
+]
+
 
 def editCategory(request):
     if request.method == 'POST':
@@ -19,7 +25,9 @@ def editCategory(request):
             print('form is not valid')
 
     form = EditCategory()
-    return render(request, 'editor.html', {'form': form})
+    topMenu[1]['active'] = True
+    topMenu[2]['active'] = False
+    return render(request, 'editor.html', {'form': form, 'topMenu': topMenu})
 
 
 def editItem(request):
@@ -37,4 +45,6 @@ def editItem(request):
         else:
             print(form.errors)
     form = EditItem()
-    return render(request, 'editor.html', {'form': form})
+    topMenu[1]['active'] = False
+    topMenu[2]['active'] = True
+    return render(request, 'editor.html', {'form': form, 'topMenu': topMenu})

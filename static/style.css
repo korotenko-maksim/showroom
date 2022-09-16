@@ -1,65 +1,229 @@
-header {
-    height: 10em;
-    background-color: gray;
+#wrapper {
+    max-width: 80%;
+    margin: auto;
 }
 
-.nav {
+body {
+	color: #8f8f8f;
+	font: 12px Tahoma, sans-serif;
+	background-color: #f8f8f8;
+	border-top: 5px solid #7e7e7e;
+	margin: 0;
+}
+
+nav {
+    background: #f3f3f3;
+    border: 1px solid #f0f0f0;
+    margin: 0px 0px 15px 0px;
+    overflow: auto;
+}
+
+nav a {
+	text-decoration: none;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+nav li {
+	list-style-position: inside;
+	font: 1rem 'Oswald', sans-serif;
+	padding: 10px;
+}
+
+.top-menu {
     float: right;
 }
 
-.nav ul {
-    font-size: 2.5rem;
+.top-menu li {
+	display: inline-block;
+	padding: 10px 30px;
+	margin: 0;
 }
 
-.nav li {
-    margin: 15px;
-    float: left;
-    position: relative;
-    list-style-type: none;
-
+.top-menu li.active {
+	background: #29c5e6;
+	color: #fff;
 }
 
-.nav li a {
-    color: black;
-    text-decoration: none;
+.top-menu li:hover {
+    background: #29c5e6;
+    text-color: #fff;
 }
 
-.nav li a:hover {
-    color: white;
+.top-menu a {
+	color: #b2b2b2;
+}
+
+.top-menu a:hover {
+    color: #fff;
 }
 
 main {
-    border: solid gray;
     width: 100%;
     clear: both;
 }
 
 .left {
     width: auto;
-    border: solid red;
     float: left;
     overflow: auto;
+    margin: 0px 15px 0px 0px;
 }
 
-.categories {
-    border: solid blue;
+.categories li {
+	font-weight: 300;
+	list-style-type: square;
+	border-top: 1px solid #e7e7e7;
+}
+
+.categories li:first-child {
+	border: none;
+}
+
+.categories li.active {
+	background: #29c5e6;
+}
+
+.categories li:hover {
+	color: #29c5e6;
+}
+
+.categories a {
+	color: #8f8f8f;
 }
 
 .filter {
-    border: solid yellow;
+    background: #f3f3f3;
+    border: 1px solid #f0f0f0;
+}
+
+h2 {
+    background: #29c5e6;
+	font: 14px 'Oswald', sans-serif;
+	color: #fff;
+	padding: 10px;
+	margin: 0px;
+}
+
+.filterText {
+	font: 1rem 'Oswald', sans-serif;
+	margin: 5px 0px;
+}
+
+input[type="number"] {
+	background-color: #fff;
+	align: central;
+	outline: none;
+	padding: 0px 0px;
+	margin: 10px 0px;
+	width: 45%;
+	height: 25px;
+	line-height: 40px;
+	text-indent: 10px;
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px solid #e7e7e7;
+	font: 14px 'Oswald', sans-serif;
+}
+
+input[type="number"]:focus {
+	outline: 2px solid #29c5e6;
+}
+
+# убираем стрелки
+input[type="number"] {
+	-moz-appearance: textfield;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	display: none;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+ /*color: #000;*/
+ cursor: default;
+ font-weight: normal;
+ font: 1rem 'Oswald', sans-serif;
+ line-height: 15px;
+ padding: 0px;
+ vertical-align: middle;
+}
+
+input[type="checkbox"] + label:before {
+ content: " ";
+ color: #29c5e6;
+ display: inline-block;
+/* шрифт Awesome*/
+ font: 20px/30px Arial;
+ margin-right: 5px;
+ margin-bottom: 5px;
+ margin-left: 5px;
+ padding: 0px;
+ position: relative;
+ text-align: center;
+ text-indent: 0px;
+ width: 20px;
+ height: 20px;
+ background: #fff;
+ border: 2px solid #e3e3e3;
+ border-image: initial;
+ vertical-align: middle;
+ line-height: 0px;
+}
+
+input:checked + label:before {
+/* глифон - галочка */
+ content: "x";
+ color: #fff;
+ background: #29c5e6;
+ padding: 0px;
+ line-height: 80%;
+}
+
+input[type=submit] {
+    padding: 5px 10px;
+    margin-top: 5px;
+    background: #fff;
+    border: 1px solid #e7e7e7;
+    border-radius: 0px
+    cursor: pointer;
+    font: 1rem 'Oswald', sans-serif;
+    color: #8f8f8f;
+}
+
+input[type=submit]:hover {
+    background: #29c5e6;
+    border: 1px solid #29c5e6;
+    cursor: pointer;
+    color: #fff;
 }
 
 .central {
     width: auto;
-    border: solid green;
+    border: none;
+    padding: 0px;
     overflow: auto;
 }
 
 .item {
-    border: solid purple;
+    background: #f3f3f3;
+    border: none;
     width: 350px;
-    margin: 25px;
-    padding: 15px;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    padding: 0px;
+    padding-bottom: 15px;
     float: left;
     position: relative;
 }
@@ -69,19 +233,20 @@ main {
 }
 
 .item_name {
+    padding: 10px;
     float: left;
-}
-
-.item_name span {
-    font-size: 2rem;
+    font-size: 1rem;
+    color: #8f8f8f;
 }
 
 .item_size {
+    padding: 10px;
     float: right;
-    position: relative;
+    color: #29c5e6;
+    font-size: 1rem;
 }
 
-.item_size span {
-    color: gray; m
-    font-size: 2rem;
+.item_producer {
+    padding: 10px;
+    clear: both;
 }

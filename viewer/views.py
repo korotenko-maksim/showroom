@@ -17,11 +17,16 @@ def main(request, categoryId=None):
 
     # выполняем обработку формы фильтр
     if request.method == 'POST':
-        filterForm = Filter(request.POST)
+        if 'apply' in request.POST:
+            filterForm = Filter(request.POST)
+        else:
+            filterForm = Filter()
         if filterForm.is_valid():
             data = filterForm.cleaned_data
             request.session['filterForm'] = data
         else:
+            data = {}
+            request.session['filterForm'] = data
             print('form is not valid')
 
     # сначала определим параметры фильтра по размеру, если задан
@@ -74,11 +79,19 @@ def main(request, categoryId=None):
 
     history = []
 
+    isActive = categoryId is None
+
     while categoryId is not None:
         category = Category.objects.get(id=categoryId)
         history.insert(0, category)
         categoryId = category.parentId
 
+    topMenu = [
+        {"name": "На главную", "active": isActive, "href": "/"},
+        {"name": "Добавить категорию", "active": False, "href": "/edit/category"},
+        {"name": "Добавить запись", "active": False, "href": "/edit/item"},
+    ]
+
     return render(request, 'main.html',
                   {'items': items, 'categories': categories, 'inners': inners,
-                   'history': history, 'filterForm': filterForm})
+                   'history': history, 'filterForm': filterForm, 'topMenu': topMenu})
