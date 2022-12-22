@@ -113,13 +113,12 @@ h2 {
 	margin: 5px 0px;
 }
 
-input[type="number"] {
+input[type="number"], input[type="text"] {
 	background-color: #fff;
 	align: central;
 	outline: none;
 	padding: 0px 0px;
-	margin: 10px 0px;
-	width: 45%;
+	margin: 5px 5px;
 	height: 25px;
 	line-height: 40px;
 	text-indent: 10px;
@@ -129,7 +128,7 @@ input[type="number"] {
 	font: 14px 'Oswald', sans-serif;
 }
 
-input[type="number"]:focus {
+input[type="number"]:focus, input[type="text"]:focus {
 	outline: 2px solid #29c5e6;
 }
 
@@ -190,9 +189,9 @@ input:checked + label:before {
  line-height: 80%;
 }
 
-input[type=submit] {
+input[type="submit"] {
     padding: 5px 10px;
-    margin-top: 5px;
+    margin: 5px 5px;
     background: #fff;
     border: 1px solid #e7e7e7;
     border-radius: 0px
@@ -249,4 +248,34 @@ input[type=submit]:hover {
 .item_producer {
     padding: 10px;
     clear: both;
+}
+
+.form {
+    background: #f3f3f3;
+    border: 1px #f0f0f0;
+    margin: 0px 0px 15px 0px;
+}
+
+.form p {
+    margin: 5px 5px;
+    margin-top: 5px;
+    font: 1rem 'Oswald', sans-serif;
+}
+
+select {
+  background-color: #fff;
+  color: #b2b2b2;
+  padding: 12px;
+  margin: 5px;
+  border: none;
+  height: 25px;
+  font: 1rem 'Oswald', sans-serif;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+select option {
+  padding: 30px;
+  margin: 5px;
 }

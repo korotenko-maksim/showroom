@@ -27,7 +27,7 @@ def editCategory(request):
     form = EditCategory()
     topMenu[1]['active'] = True
     topMenu[2]['active'] = False
-    return render(request, 'editor.html', {'form': form, 'topMenu': topMenu})
+    return render(request, 'editor.html', {'form': form, 'topMenu': topMenu, 'title': 'ДОБАВИТЬ КАТЕГОРИЮ'})
 
 
 def editItem(request):
@@ -47,4 +47,4 @@ def editItem(request):
     form = EditItem()
     topMenu[1]['active'] = False
     topMenu[2]['active'] = True
-    return render(request, 'editor.html', {'form': form, 'topMenu': topMenu})
+    return render(request, 'editor.html', {'form': form, 'topMenu': topMenu, 'title': 'ДОБАВИТЬ ЗАПИСЬ'})
